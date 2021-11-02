@@ -22,4 +22,5 @@ abstract class GameObject {
         object.draw(batch);
     }
 
+
 }
