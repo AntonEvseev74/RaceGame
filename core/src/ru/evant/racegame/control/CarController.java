@@ -21,10 +21,11 @@ public class CarController {
     float speedCarMax = 3f; // максимальная скорость машинки
     public void handle(){
         // управление скоростью
+        // Скорость > 0 = вперед, Скорость < 0 = назад.
         if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W))
-            speedCar += velocitySpeedCar;
+            speedCar += velocitySpeedCar; // Скорость > 0 = вперед
         else if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S))
-            speedCar -= velocitySpeedCar;
+            speedCar -= velocitySpeedCar; // Скорость < 0 = назад
         else downSpeed();
 
         speedCar = sliceSpeed();
