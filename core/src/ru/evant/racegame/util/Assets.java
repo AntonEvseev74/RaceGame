@@ -9,8 +9,8 @@ public class Assets {
     private String pathAtlas = "atlas.atlas";
     private AssetManager manager;
 
-    public Assets(AssetManager manager) {
-        this.manager = manager;
+    public Assets() {
+        this.manager = new AssetManager();
         manager.load(pathAtlas, TextureAtlas.class);
         manager.finishLoading();
     }
