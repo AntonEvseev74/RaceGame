@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 import ru.evant.racegame.model.Car;
 
@@ -14,18 +15,21 @@ public class GameScreen implements Screen {
 
     private SpriteBatch batch;
 
-    private Texture textureCar;
+    private TextureAtlas textureAtlas;
+
     private Car car;
     private float baseSizeCar = 1f; // базовый размер картинки машинки(в данном случае ширина)
 
     private OrthographicCamera camera;
 
+    public void setTextureAtlas(TextureAtlas textureAtlas) {
+        this.textureAtlas = textureAtlas;
+    }
+
     @Override
     public void show() {
         batch = new SpriteBatch();
-        textureCar = new Texture(Gdx.files.internal("car.png"));
-        textureCar.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        car = new Car(textureCar, 0, 0, baseSizeCar, baseSizeCar * 2);
+        car = new Car(textureAtlas.findRegion("car"), 0, 0, baseSizeCar, baseSizeCar * 2);
     }
 
     @Override
@@ -66,7 +70,6 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-        textureCar.dispose();
         batch.dispose();
     }
 }
