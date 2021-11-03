@@ -16,7 +16,7 @@ public class GameScreen implements Screen {
 
     private Texture textureCar;
     private Car car;
-    private float baseSizeCar = 1f; // базовый размер картинки машинки
+    private float baseSizeCar = 1f; // базовый размер картинки машинки(в данном случае ширина)
 
     private OrthographicCamera camera;
 
