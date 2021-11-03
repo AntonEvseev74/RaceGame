@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 import ru.evant.racegame.model.Car;
+import ru.evant.racegame.util.UI;
 
 public class GameScreen implements Screen {
     public static float dt; // delta time
@@ -22,6 +23,8 @@ public class GameScreen implements Screen {
 
     private OrthographicCamera camera;
 
+    private UI ui;
+
     public void setTextureAtlas(TextureAtlas textureAtlas) {
         this.textureAtlas = textureAtlas;
     }
@@ -30,12 +33,14 @@ public class GameScreen implements Screen {
     public void show() {
         batch = new SpriteBatch();
         car = new Car(textureAtlas.findRegion("car"), 0, 0, baseSizeCar, baseSizeCar * 2);
+        ui = new UI();
     }
 
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         dt = delta;
 
@@ -45,6 +50,8 @@ public class GameScreen implements Screen {
         car.draw(batch);
         batch.end();
         //!
+
+        ui.draw();
     }
 
     @Override
@@ -71,5 +78,6 @@ public class GameScreen implements Screen {
     @Override
     public void dispose() {
         batch.dispose();
+        ui.dispose();
     }
 }
